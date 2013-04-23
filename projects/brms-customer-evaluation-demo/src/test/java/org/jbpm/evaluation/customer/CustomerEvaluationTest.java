@@ -3,12 +3,13 @@ package org.jbpm.evaluation.customer;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.drools.KnowledgeBase;
-import org.drools.builder.ResourceType;
-import org.drools.runtime.StatefulKnowledgeSession;
-import org.drools.runtime.process.WorkflowProcessInstance;
+
 import org.jbpm.test.JbpmJUnitTestCase;
 import org.junit.Test;
+import org.kie.api.KieBase;
+import org.kie.api.io.ResourceType;
+import org.kie.api.runtime.KieSession;
+import org.kie.api.runtime.process.WorkflowProcessInstance;
 
 /**
  * This is a sample file to launch a process.
@@ -19,8 +20,8 @@ public class CustomerEvaluationTest extends JbpmJUnitTestCase {
 	private static Integer adultAged    = 25;
 	private static Integer richCustomer = 2000; // greater than 999.
 	private static Integer poorCutomer  = 2;
-	private static KnowledgeBase kbase; 
-	private static StatefulKnowledgeSession ksession;
+	private static KieBase kbase; 
+	private static KieSession ksession;
 	
 	public CustomerEvaluationTest() {
 		super(true);
@@ -37,8 +38,9 @@ public class CustomerEvaluationTest extends JbpmJUnitTestCase {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		ksession = createKnowledgeSession(kbase); 
+		ksession = kbase.newKieSession(); 
 	}
+	
 	@Test
 	public void underagedCustomerEvaluationTest() {
 

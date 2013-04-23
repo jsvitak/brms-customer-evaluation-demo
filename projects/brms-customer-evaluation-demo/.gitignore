@@ -1,2 +1,4 @@
 btm*
 *.log
+/.*
+!.gitignore
