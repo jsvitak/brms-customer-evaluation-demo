@@ -38,7 +38,7 @@ public class CustomerEvaluationTest extends JbpmJUnitTestCase {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		ksession = kbase.newKieSession(); 
+		ksession = createKnowledgeSession(); 
 	}
 	
 	@Test
